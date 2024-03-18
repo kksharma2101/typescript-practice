@@ -2,9 +2,14 @@
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
+import { TodosProviders } from './store/todoStore.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
+
   // <React.StrictMode>
-  <App />
-  // </React.StrictMode>,
+  <TodosProviders>
+    <App />
+  </TodosProviders>
+  // </React.StrictMode>
+
 )
