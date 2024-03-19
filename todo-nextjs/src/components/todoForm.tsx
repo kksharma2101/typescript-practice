@@ -1,28 +1,47 @@
 'use client'
+import { TodoObject } from "@/store/todoStore";
+// import { useTodos } from "@/store/todoStore";
 import { useState } from "react"
 
 export const TodoForm = () => {
-    const [todo, setTodo] = useState('');
+    const [inputText, setInputText] = useState<string>('');
+    const [todoItems, setTodoItems] = useState<TodoObject[]>([]);
+    // const [handleAddTodo] = useTodos();
+    // console.log(inputText)
 
-    const handleAddTodo = (e: React.FormEvent<HTMLFormElement>) => {
+
+    const handleFormTodo = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // setTodo((prev) => {
-
-        //     return [...prev, todo]
-        // })
+        setTodoItems([{
+            id: Math.random().toString(),
+            value: inputText,
+            checked: false
+        }, ...todoItems])
+        setInputText('')
+        // window.localStorage.setItem('todos', JSON.stringify(inputText))
     }
 
     return (
-        <form onSubmit={handleAddTodo}>
-            <div className="mt-6">
-                <input type="text"
-                    value={todo}
-                    onChange={(e) => setTodo(e.target.value)}
-                    autoFocus
-                    className="border-2 p-1 text-xl m-2"
-                />
-                <button type="submit" className="bg-blue-700 px-4 p-1 rounded-md text-white text-2xl">Add</button>
+        <>
+            <form onSubmit={handleFormTodo}>
+                <div className="mt-6">
+                    <input type="text"
+                        value={inputText}
+                        onChange={(e) => setInputText(e.target.value)}
+                        autoFocus
+                        maxLength={30}
+                        className="border-2 p-1 text-xl m-2"
+                    />
+                    <button type="submit" className="bg-blue-700 px-4 p-1 rounded-md text-white text-2xl">Add</button>
+                </div>
+            </form>
+            <div>
+                <ul>
+                    {todoItems.map((todo) => (
+                        <li key={todo.id}>{todo.value}</li>
+                    ))}
+                </ul>
             </div>
-        </form>
+        </>
     )
 }
