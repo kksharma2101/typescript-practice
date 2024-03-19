@@ -35,6 +35,7 @@ export const TodoForm = () => {
                     <button type="submit" className="bg-blue-700 px-4 p-1 rounded-md text-white text-2xl">Add</button>
                 </div>
             </form>
+
             <div>
                 <ul>
                     {todoItems.map((todo) => (
