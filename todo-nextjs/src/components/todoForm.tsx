@@ -39,7 +39,7 @@ export const TodoForm = () => {
             <div>
                 <ul>
                     {todoItems.map((todo) => (
-                        <li key={todo.id}>{todo.value}</li>
+                        <li key={todo.id} className="capitalize">{todo.value}</li>
                     ))}
                 </ul>
             </div>
