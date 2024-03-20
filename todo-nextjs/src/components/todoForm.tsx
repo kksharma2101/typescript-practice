@@ -6,6 +6,7 @@ import { useState } from "react"
 export const TodoForm = () => {
     const [inputText, setInputText] = useState<string>('');
     const [todoItems, setTodoItems] = useState<TodoObject[]>([]);
+    const [checked] = useState(false)
     // const [handleAddTodo] = useTodos();
     // console.log(inputText)
 
@@ -30,6 +31,7 @@ export const TodoForm = () => {
                         onChange={(e) => setInputText(e.target.value)}
                         autoFocus
                         maxLength={30}
+                        checked
                         className="border-2 p-1 text-xl m-2"
                     />
                     <button type="submit" className="bg-blue-700 px-4 p-1 rounded-md text-white text-2xl">Add</button>
